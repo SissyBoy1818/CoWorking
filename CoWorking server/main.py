@@ -59,7 +59,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     account_id = db.sign_in(form_data.username, form_data.password)
     if account_id is None:
-        raise HTTPException(status_code=401, detail="Invalid login/password")
+        return HTTPException(status_code=401, detail="Invalid login/password")
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
@@ -67,6 +67,13 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
     )
 
     return {"access_token": access_token, "token_type": "bearer"}
+
+@app.post("/register")
+def register(name: str, form_data: OAuth2PasswordRequestForm = Depends()):
+    if db.sign_up(name, form_data.username, form_data.password):
+        return login(form_data)
+    else:
+        raise HTTPException(status_code=401, detail="This email is already in use.")
 
 # POST запрос на бронирование рабочего места
 @app.post("/book_workplace")

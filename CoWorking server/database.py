@@ -14,17 +14,29 @@ class DataBase:
         connection = sqlite3.connect(self.db_path)
         cursor = connection.cursor()
 
-        query: str = "SELECT id, password_hash FROM users WHERE email = ?"
-        cursor.execute(query, (login,))
+        query: str = "SELECT id FROM users WHERE email = ? AND password_hash = ?"
+        cursor.execute(query, (login,password))
 
-        result = cursor.fetchone()
-        if result is None:
+        user_id = cursor.fetchone()
+        if user_id is None:
             return None
+        return user_id
 
-        user_id, password_hash = result
-        if password_hash == password:
-            return user_id
-        return None
+    def sign_up(self, name: str, login: str, password: str):
+        connection = sqlite3.connect(self.db_path)
+        cursor = connection.cursor()
+
+        query: str = "SELECT * FROM users WHERE email = ?"
+        cursor.execute(query, (login, ))
+
+        user_id = cursor.fetchone()
+        if not(user_id is None):
+            return False
+
+        query: str = "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)"
+        cursor.execute(query, (name, login,password))
+        connection.commit()
+        return True
 
     def book_workplace(self, user_id: int, workplace_id: int,
                        timestamp: datetime, duration: timedelta):
