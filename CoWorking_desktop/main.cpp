@@ -1,13 +1,11 @@
-#include "AuthorizationWindow/LoginWigdet.h"
-#include "Network/NetworkManager.h"
+#include "AuthorizationWindow/AuthorizationWindow.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    auto *net = new NetworkManager();
-    LoginWigdet w(net);
+    AuthorizationWindow w;
 
     w.show();
     return a.exec();

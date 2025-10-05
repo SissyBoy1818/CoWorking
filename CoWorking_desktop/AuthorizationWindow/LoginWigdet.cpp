@@ -9,7 +9,7 @@
 
 #include "Network/NetworkManager.h"
 
-LoginWigdet::LoginWigdet(NetworkManager *netManager, QWidget *parent)
+LoginWidget::LoginWidget(NetworkManager *netManager, QWidget *parent)
     : QWidget{parent}, m_network{netManager}
 {
 
@@ -48,14 +48,15 @@ LoginWigdet::LoginWigdet(NetworkManager *netManager, QWidget *parent)
     m_passwordLine->setMaxLength(24);
     m_passwordLine->setEchoMode(QLineEdit::Password);
 
-    connect(m_signinButton, &QPushButton::clicked, this, &LoginWigdet::signinClicked);
+    connect(m_signinButton, &QPushButton::clicked, this, &LoginWidget::signinClicked);
+    connect(m_network,&NetworkManager::successfulSignin, this, [this](){ emit signedIn(1);});
 
     setMinimumSize(750,500);
 }
 
-void LoginWigdet::signinClicked()
+void LoginWidget::signinClicked()
 {
     QString login = m_loginLine->text();
     QString password = m_passwordLine->text();
-    m_network->login(login, password);
+    m_network->signin(login, password);
 }

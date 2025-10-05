@@ -11,13 +11,18 @@ class NetworkManager : public QObject
 public:
     explicit NetworkManager(QObject *parent = nullptr);
 
-    bool login(const QString &login, const QString &password);
+    void signin(const QString &login, const QString &password);
+    void signup(const QString &name, const QString &login, const QString &password);
+    void getWorkplaces();
 
 private:
     QNetworkAccessManager *m_networkManager;
-    QString serverAddr;
+    QString m_serverAddr;
+    QString m_token;
 
 signals:
+    void successfulSignin();
+    void successfulSignup();
 };
 
 #endif // NETWORKMANAGER_H

@@ -7,11 +7,11 @@ class QLineEdit;
 class QPushButton;
 class NetworkManager;
 
-class LoginWigdet : public QWidget
+class LoginWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit LoginWigdet(NetworkManager *netManager,  QWidget *parent = nullptr);
+    explicit LoginWidget(NetworkManager *netManager,  QWidget *parent = nullptr);
 
 private:
     NetworkManager  *m_network;
@@ -24,6 +24,7 @@ private slots:
     void signinClicked();
 
 signals:
+    void signedIn(int);
 };
 
 #endif // LOGINWIGDET_H
