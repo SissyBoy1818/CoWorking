@@ -49,7 +49,7 @@ LoginWidget::LoginWidget(NetworkManager *netManager, QWidget *parent)
     m_passwordLine->setEchoMode(QLineEdit::Password);
 
     connect(m_signinButton, &QPushButton::clicked, this, &LoginWidget::signinClicked);
-    connect(m_network,&NetworkManager::successfulSignin, this, [this](){ emit signedIn(1);});
+    connect(m_network,&NetworkManager::successfulSignin, this, &LoginWidget::signedIn);
 
     setMinimumSize(750,500);
 }

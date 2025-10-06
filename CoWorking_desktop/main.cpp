@@ -1,12 +1,13 @@
-#include "AuthorizationWindow/AuthorizationWindow.h"
+#include "AppController.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    AuthorizationWindow w;
+    QApplication app(argc, argv);
 
-    w.show();
-    return a.exec();
+    AppController controller;
+    controller.start();
+
+    return app.exec();
 }

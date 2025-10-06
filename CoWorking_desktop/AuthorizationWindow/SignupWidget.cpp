@@ -63,6 +63,7 @@ SignupWidget::SignupWidget(NetworkManager *networkManager, QWidget *parent)
     m_signupButton->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
     connect(m_signupButton, &QPushButton::clicked, this, &SignupWidget::signupTry);
+    connect(m_network,&NetworkManager::successfulSignup, this, &SignupWidget::signedIn);
 }
 
 void SignupWidget::signupTry()

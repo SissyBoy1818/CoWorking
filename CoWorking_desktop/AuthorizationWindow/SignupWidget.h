@@ -26,6 +26,7 @@ private slots:
     void signupTry();
 
 signals:
+    void signedIn();
 };
 
 #endif // SIGNUPWIDGET_H

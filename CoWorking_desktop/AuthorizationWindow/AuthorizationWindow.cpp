@@ -17,9 +17,10 @@ AuthorizationWindow::AuthorizationWindow(QWidget *parent)
     mainLayout->addWidget(m_stacked);
     m_stacked->addWidget(m_loginWidget);
     m_stacked->addWidget(m_signupWidget);
-    m_stacked->setCurrentIndex(1);
+    m_stacked->setCurrentIndex(0);
 
-    connect(m_loginWidget, &LoginWidget::signedIn, this, &AuthorizationWindow::changeWidget);
+    connect(m_loginWidget, &LoginWidget::signedIn, this, &AuthorizationWindow::loginSuccessful);
+    connect(m_signupWidget, &SignupWidget::signedIn, this, &AuthorizationWindow::loginSuccessful);
 }
 
 void AuthorizationWindow::changeWidget(int index)

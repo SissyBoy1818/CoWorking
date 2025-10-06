@@ -25,6 +25,7 @@ private slots:
     void changeWidget(int index);
 
 signals:
+    void loginSuccessful();
 };
 
 #endif // AUTHORIZATIONWINDOW_H

@@ -24,7 +24,7 @@ private slots:
     void signinClicked();
 
 signals:
-    void signedIn(int);
+    void signedIn();
 };
 
 #endif // LOGINWIGDET_H

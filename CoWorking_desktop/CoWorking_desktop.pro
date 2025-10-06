@@ -9,18 +9,26 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AppController.cpp \
     AuthorizationWindow/AuthorizationWindow.cpp \
     AuthorizationWindow/LoginWigdet.cpp \
     AuthorizationWindow/SignupWidget.cpp \
+    MainWindow/BookingItem.cpp \
+    MainWindow/BookingsView.cpp \
     MainWindow/CoworkingDesktop.cpp \
+    MainWindow/MenuWidget.cpp \
     Network/NetworkManager.cpp \
     main.cpp
 
 HEADERS += \
+    AppController.h \
     AuthorizationWindow/AuthorizationWindow.h \
     AuthorizationWindow/LoginWigdet.h \
     AuthorizationWindow/SignupWidget.h \
+    MainWindow/BookingItem.h \
+    MainWindow/BookingsView.h \
     MainWindow/CoworkingDesktop.h \
+    MainWindow/MenuWidget.h \
     Network/NetworkManager.h
 
 FORMS += \
@@ -31,3 +39,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
