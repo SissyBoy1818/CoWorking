@@ -4,16 +4,21 @@
 #include <QWidget>
 
 class MenuWidget;
+class BookingsView;
 class BookingDesktop;
+class NetworkManager;
 
 class CoworkingDesktop : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CoworkingDesktop(QWidget *parent = nullptr);
+    explicit CoworkingDesktop(NetworkManager* netManager, QWidget *parent = nullptr);
 
 private:
-    MenuWidget *m_menu;
+    MenuWidget   *m_menu;
+    BookingsView *m_workpalceBookings;
+
+    NetworkManager* m_network;
 
 signals:
 };

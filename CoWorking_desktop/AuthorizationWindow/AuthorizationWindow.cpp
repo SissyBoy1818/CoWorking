@@ -6,8 +6,8 @@
 #include "AuthorizationWindow/SignupWidget.h"
 #include "Network/NetworkManager.h"
 
-AuthorizationWindow::AuthorizationWindow(QWidget *parent)
-    : QWidget{parent}, m_network(new NetworkManager)
+AuthorizationWindow::AuthorizationWindow(NetworkManager* netManager, QWidget *parent)
+    : QWidget{parent}, m_network(netManager)
 {
     QHBoxLayout *mainLayout = new QHBoxLayout(this);
     m_stacked = new QStackedWidget();

@@ -13,8 +13,10 @@ SOURCES += \
     AuthorizationWindow/AuthorizationWindow.cpp \
     AuthorizationWindow/LoginWigdet.cpp \
     AuthorizationWindow/SignupWidget.cpp \
+    MainWindow/AcceptBookingWindow.cpp \
     MainWindow/BookingItem.cpp \
     MainWindow/BookingsView.cpp \
+    MainWindow/ControlPanel.cpp \
     MainWindow/CoworkingDesktop.cpp \
     MainWindow/MenuWidget.cpp \
     Network/NetworkManager.cpp \
@@ -25,8 +27,10 @@ HEADERS += \
     AuthorizationWindow/AuthorizationWindow.h \
     AuthorizationWindow/LoginWigdet.h \
     AuthorizationWindow/SignupWidget.h \
+    MainWindow/AcceptBookingWindow.h \
     MainWindow/BookingItem.h \
     MainWindow/BookingsView.h \
+    MainWindow/ControlPanel.h \
     MainWindow/CoworkingDesktop.h \
     MainWindow/MenuWidget.h \
     Network/NetworkManager.h

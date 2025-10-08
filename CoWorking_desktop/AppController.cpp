@@ -2,11 +2,12 @@
 
 #include "MainWindow/CoworkingDesktop.h"
 #include "AuthorizationWindow/AuthorizationWindow.h"
+#include "Network/NetworkManager.h"
 
 #include <QApplication>
 
 AppController::AppController(QObject *parent)
-    : QObject(parent)
+    : QObject{parent}, m_network(new NetworkManager)
 {}
 
 void AppController::start() {
@@ -21,7 +22,7 @@ void AppController::showLogin() {
         m_mainWindow = nullptr;
     }
 
-    m_loginWindow = new AuthorizationWindow();
+    m_loginWindow = new AuthorizationWindow(m_network);
     m_loginWindow->show();
 
     QObject::connect(m_loginWindow, &AuthorizationWindow::loginSuccessful,
@@ -36,6 +37,6 @@ void AppController::showMainWindow() {
         m_loginWindow = nullptr;
     }
 
-    m_mainWindow = new CoworkingDesktop();
+    m_mainWindow = new CoworkingDesktop(m_network);
     m_mainWindow->show();
 }

@@ -5,6 +5,7 @@
 
 class AuthorizationWindow;
 class CoworkingDesktop;
+class NetworkManager;
 
 class AppController : public QObject
 {
@@ -15,8 +16,10 @@ public:
     void start();
 
 private:
-    AuthorizationWindow *m_loginWindow = nullptr;
-    CoworkingDesktop    *m_mainWindow  = nullptr;
+    NetworkManager *m_network;
+
+    AuthorizationWindow *m_loginWindow;
+    CoworkingDesktop    *m_mainWindow;
 
     void showLogin();
     void showMainWindow();

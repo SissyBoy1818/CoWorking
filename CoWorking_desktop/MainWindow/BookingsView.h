@@ -2,19 +2,32 @@
 #define BOOKINGSVIEW_H
 
 #include <QWidget>
-#include "MainWindow/BookingItem.h"
+#include <QListWidgetItem>
 
 class QListWidget;
+class QPushButton;
+class NetworkManager;
 
 class BookingsView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BookingsView(QWidget *parent = nullptr);
+    explicit BookingsView(NetworkManager *netManager, QWidget *parent = nullptr);
 
 private:
+    NetworkManager *m_network;
+
     QListWidget *m_view;
-    QList<BookingItem*> m_items;
+    QList<QListWidgetItem*> m_items;
+
+    QPushButton *m_bookButton;
+
+    void updateItems();
+    void resizeEvent(QResizeEvent *event) override;
+
+private slots:
+    void book();
+    void itemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
 signals:
 };

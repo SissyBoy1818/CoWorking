@@ -3,12 +3,27 @@
 
 #include <QListWidgetItem>
 
-class BookingItem : public QListWidgetItem
+class QPushButton;
+
+class BookingItem : public QWidget
 {
+    Q_OBJECT
 public:
-    explicit BookingItem(QListWidget *parent = nullptr);
+    explicit BookingItem(QWidget *parent = nullptr);
+
+    QString name() const;
+    QVector<quint8> hours() const;
+
+    void updateHours(QVector<quint8> avalibleHours);
 
 private:
+    QString m_name;
+    QVector<quint8> m_choosenTime;
+
+    QVector<QPushButton*> m_buttons;
+
+private slots:
+    void timeButtoonClicked();
 
 };
 

@@ -12,7 +12,7 @@ class AuthorizationWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit AuthorizationWindow(QWidget *parent = nullptr);
+    explicit AuthorizationWindow(NetworkManager* netManager, QWidget *parent = nullptr);
 
 private:
     QStackedWidget  *m_stacked;
